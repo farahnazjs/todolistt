@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Gideon+Roman&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            overflow-y: hidden;
+            background: linear-gradient(30deg,gold,rgb(201, 137, 20),purple);
+            font-family: 'Gideon Roman', cursive;
+        }
+       .title{
+           height: 20px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           margin-top: 50px;
+           margin-bottom: 20px;
+       }
+       .title>h2{
+         letter-spacing: 3px;
+       }
+        .todolist{
+            width: 500px;
+            height: 600px;
+            margin:  auto;
+            background-color: rgba(218, 212, 212, 0.225);
+            overflow-y: scroll;
+            border-radius: 10px;
+        }
+        .todolist>div:nth-of-type(1){
+            width: 100%;
+            height: 250px;
+            background-image: url(img33/young-man-arms-outstretched-by-sea-sunrise-enjoying-freedom-life-people-travel-wellbeing-concept_169160-68.jpg);
+            background-size: cover;
+        }
+        #text{
+            width: 100%;
+            display: flex;
+            justify-content:center;
+        }
+        #text>input::placeholder{
+            color: rgba(255, 255, 255, 0.826);
+        }
+        #text>input{
+            width: 75%;
+            font-size: 20px;
+            height: 50px;
+            align-items: center;
+            background-color: inherit;
+            border: none;
+            border-bottom: 3px solid rgb(63, 20, 27);
+            color: rgb(255, 255, 255);
+        }
+        #text>input::placeholder{
+            color: rgba(255, 255, 255, 0.705);
+        }
+        #text>button{
+            width: 10%;
+            font-size: 40px;
+            cursor: pointer;
+            background-color: inherit;
+            border: none;
+            border-bottom: 3px solid rgb(63, 20, 27);
+            color: white;
+            transition: 0.4s;
+        }
+        #text>button:hover,
+        .newline>li>span:nth-of-type(2):hover{
+            background-color: black;
+            color: white;
+        }
+        ul{
+            list-style-type: none;
+        }
+        ul>li{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid rgb(52, 51, 51);
+            transition: 0.4s;
+        }
+        .newline>li>*{
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .newline>li>span:nth-of-type(1){
+            color: rgba(24, 24, 24, 0.86);
+        }
+        .newline>li:hover{
+            background-color: rgba(128, 128, 128, 0.365);
+        }
+       
+        
+
+
+
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h2>Vacation todolist</h2>
+    </div>
+    <div class="todolist">
+            <div></div>
+            <div id="text">
+                <input id="valint" type="text" placeholder="Add iTem...">
+                <button onclick="_add()">+</button>
+            </div>
+            <ul class="newline">
+                <li onclick="_select(this)">
+                    <input onclick="Add()" type="checkbox" name="tow" id="one">
+                    <span>Buy Flight Tickets</span>
+                    <span onclick="_del(this)"> &#10007;</span>
+                </li>
+                <li onclick="_select(this)">
+                    <input onclick="Add()" type="checkbox" name="tow" id="one">
+                    <span>Passport</span>
+                    <span onclick="_del(this)"> &#10007;</span>
+                </li>
+                <li onclick="_select(this)" >
+                    <input onclick="Add()" type="checkbox" name="three" id="one">
+                    <span>Look up things to do</span>
+                    <span onclick="_del(this)"> &#10007;</span>
+                </li>
+            </ul>
+    </div>
+    <script>
+        
+         
+        function _add(){
+            document.getElementById("valint").focus()
+           let temp = document.getElementById("valint").value
+           console.log(temp)
+         if (temp.length > 2) {  
+            x = document.createElement('li')
+            x.innerHTML= '<input type="checkbox" name="in1" id="in1"> <label for="in1" id="line">'+temp+'</label><span onclick="_del(this)"> &#10007;</span>'
+            document.getElementsByClassName('newline')[0].appendChild(x)
+            document.getElementById("valint").value=null
+         }else{
+            alert('not true!')
+         }
+        }
+       
+        
+        function _del(self){
+            self.parentElement.remove()
+            alert("are u sure?")
+        }
+        let inp = document.querySelectorAll('#one')
+        let text = document.querySelectorAll('li span')
+        inp.forEach((items , index)=>{
+               
+               items.addEventListener('click' , ()=>{
+                 if(items.checked){
+                    items.nextElementSibling.style.textDecoration='line-through'
+                 }else{
+                    items.nextElementSibling.style.textDecoration='none'
+                 }
+               })
+
+        })
+      
+ 
+    </script>
+
+</body>
+</html>
